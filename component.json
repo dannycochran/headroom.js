@@ -1,0 +1,7 @@
+{
+  "name": "headroom.js",
+  "repository": "dannycochran/unveil.js",
+  "description": "fork of headroom.js",
+  "version": "0.7.0",
+  "scripts": ["src/Headroom.js"]
+}
