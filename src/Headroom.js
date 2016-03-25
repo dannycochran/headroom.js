@@ -108,6 +108,7 @@
     this.lastKnownScrollY = 0;
     this.elem             = elem;
     this.debouncer        = new Debouncer(this.update.bind(this));
+    this.noop             = function(event) {};
     this.tolerance        = options.tolerance;
     this.classes          = options.classes;
     this.offset           = options.offset;
@@ -146,14 +147,14 @@
       var classes = this.classes;
 
       this.initialised = false;
-      this.scroller.removeEventListener('touchstart');
+      this.scroller.removeEventListener('touchstart', this.noop);
       this.scroller.removeEventListener('scroll', this.debouncer, false);
       this.elem.classList.remove(classes.unpinned, classes.pinned, classes.top, classes.initial);
     },
 
     setupListeners: function () {
       this.elem.classList.add(this.classes.initial);
-      this.scroller.addEventListener('touchstart', function(event){});
+      this.scroller.addEventListener('touchstart', this.noop);
 
       // defer event registration to handle browser 
       // potentially restoring previous scroll position
